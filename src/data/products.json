@@ -1,0 +1,86 @@
+[
+  {
+    "id": "1",
+    "name": "Streetwear Collection Drop",
+    "category": "hoodie",
+    "description": "Premium comfort for the urban explorer. Engineered for the streets with heavyweight cotton fleece.",
+    "price": 3990,
+    "sku": "USH-BLK-001",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": 45,
+    "images": [
+      "/products/group-mix.jpg"
+    ],
+    "tags": [
+      "NEW"
+    ],
+    "createdAt": "2024-02-01T10:00:00Z"
+  },
+  {
+    "id": "2",
+    "name": "Essential Crewneck (Levi's)",
+    "category": "crewneck",
+    "description": "A minimalist essential. The perfect beige crewneck for layering or wearing solo.",
+    "price": 2990,
+    "sku": "USC-BGE-042",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": 12,
+    "images": [
+      "/products/levis-beige.jpg"
+    ],
+    "tags": [
+      "HOT"
+    ],
+    "createdAt": "2024-01-28T14:30:00Z"
+  },
+  {
+    "id": "3",
+    "name": "Graphic Street Sweat (Lufian)",
+    "category": "sweatshirt",
+    "description": "Bold graphics meeting premium fabric. Stand out with this limited edition piece.",
+    "price": 3490,
+    "sku": "USC-BLU-019",
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": 0,
+    "images": [
+      "/products/lufian-blue.jpg"
+    ],
+    "tags": [],
+    "createdAt": "2024-01-15T09:15:00Z"
+  },
+  {
+    "id": "4",
+    "name": "Urban Core Hoodie (Hummel)",
+    "category": "hoodie",
+    "description": "Crafted from 500GSM organic cotton, the Urban Core Hoodie offers a structured, architectural fit.",
+    "price": 4290,
+    "sku": "USH-GRN-005",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": 28,
+    "images": [
+      "/products/hummel-green.jpg"
+    ],
+    "tags": [
+      "LIMITED"
+    ],
+    "createdAt": "2024-02-01T11:00:00Z"
+  }
+]
