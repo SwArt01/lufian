@@ -27,7 +27,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }, [pathname, router]);
 
     const login = (password: string) => {
-        if (password === "admin123") {
+        if (password === "Lf@2026$Mert!Adm1n") {
             setIsAuthenticated(true);
             sessionStorage.setItem("admin_auth", "true");
             router.push("/admin");
