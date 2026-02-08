@@ -108,7 +108,7 @@ Fiyat: ₺${product.price.toLocaleString('tr-TR')}`;
                             priority
                         />
                     </div>
-                    <div className="grid grid-cols-4 gap-4">
+                    <div className="grid grid-cols-5 sm:grid-cols-4 gap-2 md:gap-4">
                         {product.images.map((img, idx) => (
                             <button
                                 key={idx}
@@ -127,7 +127,7 @@ Fiyat: ₺${product.price.toLocaleString('tr-TR')}`;
                     <span className="text-primary text-sm font-bold uppercase tracking-wider mb-2">
                         {product.category}
                     </span>
-                    <h1 className="text-4xl font-black uppercase tracking-tight mb-4">{product.name}</h1>
+                    <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tight mb-4">{product.name}</h1>
                     <div className="flex items-center gap-4 mb-8">
                         {product.originalPrice && product.originalPrice > product.price ? (
                             <>
@@ -190,7 +190,7 @@ Fiyat: ₺${product.price.toLocaleString('tr-TR')}`;
                             <span className="font-bold text-sm uppercase">{t("product.selectSize")}</span>
                             <button className="text-xs text-primary font-bold underline">{t("product.sizeGuide")}</button>
                         </div>
-                        <div className="grid grid-cols-4 gap-3">
+                        <div className="grid grid-cols-5 sm:grid-cols-4 gap-2 md:gap-3">
                             {product.sizes.map((size) => (
                                 <button
                                     key={size}
@@ -207,8 +207,8 @@ Fiyat: ₺${product.price.toLocaleString('tr-TR')}`;
                     </div>
 
                     {/* Actions */}
-                    <div className="space-y-4 mb-8">
-                        <div className="flex gap-3">
+                    <div className="space-y-3 md:space-y-4 mb-8">
+                        <div className="flex gap-2 md:gap-3">
                             <Button
                                 size="lg"
                                 className="flex-1 h-14 text-lg"

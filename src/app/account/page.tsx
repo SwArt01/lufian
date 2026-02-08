@@ -100,10 +100,10 @@ export default function AccountPage() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-12">
                 {/* Profile Card */}
-                <div className="lg:col-span-2 space-y-6">
-                    <div className="bg-white dark:bg-surface border border-gray-100 dark:border-gray-700 rounded-2xl p-8 shadow-sm">
+                <div className="lg:col-span-2 space-y-4 md:space-y-6">
+                    <div className="bg-white dark:bg-surface border border-gray-100 dark:border-gray-700 rounded-xl md:rounded-2xl p-6 md:p-8 shadow-sm">
                         <div className="flex items-start justify-between mb-6">
                             <div className="flex items-start gap-4">
                                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl font-bold">

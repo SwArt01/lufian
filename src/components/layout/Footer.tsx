@@ -18,9 +18,9 @@ export function Footer() {
     };
 
     return (
-        <footer className="bg-white dark:bg-surface border-t border-border mt-20 pt-16 pb-8">
+        <footer className="bg-white dark:bg-surface border-t border-border mt-12 md:mt-20 pt-10 md:pt-16 pb-6 md:pb-8">
             <div className="container-custom">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-16">
                     {/* Brand */}
                     <div className="space-y-4">
                         <div className="flex items-center gap-2">
@@ -85,7 +85,7 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+                <div className="pt-6 md:pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-xs text-text-secondary uppercase tracking-wider">
                         {t("footer.copyright")}
                     </p>

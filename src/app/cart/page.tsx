@@ -75,17 +75,17 @@ Toplam Tutar: ₺${total.toLocaleString('tr-TR')}`;
 
     return (
         <div className="container-custom py-12">
-            <h1 className="text-3xl font-black uppercase tracking-tight mb-12">{t("cart.title")}</h1>
+            <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-8 md:mb-12">{t("cart.title")}</h1>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 {/* Cart Items */}
-                <div className="lg:col-span-2 space-y-8">
+                <div className="lg:col-span-2 space-y-4 md:space-y-8">
                     {items.map((item) => (
                         <div
                             key={item.cartId}
-                            className="flex gap-6 p-6 bg-white dark:bg-surface border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm"
+                            className="flex flex-col sm:flex-row gap-4 md:gap-6 p-4 md:p-6 bg-white dark:bg-surface border border-gray-100 dark:border-gray-700 rounded-xl md:rounded-2xl shadow-sm"
                         >
-                            <div className="relative w-24 h-32 flex-shrink-0 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
+                            <div className="relative w-full sm:w-24 h-40 sm:h-32 flex-shrink-0 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
                                 <Image
                                     src={item.images[0]}
                                     alt={item.name}
@@ -143,7 +143,7 @@ Toplam Tutar: ₺${total.toLocaleString('tr-TR')}`;
 
                 {/* Summary */}
                 <div className="lg:col-span-1">
-                    <div className="bg-gray-50 dark:bg-surface rounded-2xl p-8 sticky top-24">
+                    <div className="bg-gray-50 dark:bg-surface rounded-xl md:rounded-2xl p-6 md:p-8 lg:sticky lg:top-24">
                         <h3 className="font-bold text-xl uppercase tracking-tight mb-8">
                             {t("cart.summary")}
                         </h3>

@@ -33,7 +33,27 @@
 
 /* Custom Utilities */
 @utility container-custom {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  @apply max-w-7xl mx-auto px-3 sm:px-6 lg:px-8;
+}
+
+/* Mobile Optimizations */
+@layer base {
+
+  /* Safe area for notched devices */
+  html {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  /* Better touch targets */
+  button,
+  a {
+    @apply touch-manipulation;
+  }
+
+  /* Prevent text size adjustment on orientation change */
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
 }
 
 @layer base {

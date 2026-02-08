@@ -13,6 +13,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
     const { itemCount } = useCart();
     const { user } = useUser();
     const { theme, toggleTheme } = useTheme();
@@ -43,7 +44,7 @@ export function Navbar() {
 
     return (
         <nav className="sticky top-0 z-50 w-full border-b border-border bg-white/80 dark:bg-surface/80 backdrop-blur-md">
-            <div className="container-custom flex h-20 items-center justify-between">
+            <div className="container-custom flex h-16 md:h-20 items-center justify-between">
 
                 {/* Mobile Menu Button */}
                 <button
@@ -79,7 +80,7 @@ export function Navbar() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 md:gap-2">
                     <div className="hidden md:flex relative group">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-text-secondary" />
                         <input
@@ -91,14 +92,17 @@ export function Navbar() {
                     </div>
 
                     {/* Mobile Search Icon */}
-                    <button className="md:hidden p-2 text-text-primary">
-                        <Search size={24} />
+                    <button
+                        className="md:hidden p-2 text-text-primary"
+                        onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
+                    >
+                        <Search size={22} />
                     </button>
 
-                    {/* Wishlist */}
-                    <Link href="/account/wishlist">
+                    {/* Wishlist - hidden on mobile */}
+                    <Link href="/account/wishlist" className="hidden sm:block">
                         <Button variant="ghost" size="icon" className="relative rounded-full">
-                            <Heart size={22} />
+                            <Heart size={20} />
                             {wishlistCount > 0 && (
                                 <span className="absolute top-1 right-1 h-4 w-4 rounded-full bg-red-500 text-[10px] font-bold text-white flex items-center justify-center">
                                     {wishlistCount}
@@ -110,7 +114,7 @@ export function Navbar() {
                     {/* Cart */}
                     <Link href="/cart">
                         <Button variant="ghost" size="icon" className="relative rounded-full">
-                            <ShoppingBag size={22} />
+                            <ShoppingBag size={20} />
                             {itemCount > 0 && (
                                 <span className="absolute top-1 right-1 h-4 w-4 rounded-full bg-primary text-[10px] font-bold text-white flex items-center justify-center">
                                     {itemCount}
@@ -119,48 +123,67 @@ export function Navbar() {
                         </Button>
                     </Link>
 
-                    {/* Theme Toggle */}
+                    {/* Theme Toggle - hidden on mobile */}
                     <Button
                         variant="ghost"
                         size="icon"
                         onClick={toggleTheme}
-                        className="rounded-full"
+                        className="hidden sm:flex rounded-full"
                     >
-                        {theme === 'dark' ? <Sun size={22} /> : <Moon size={22} />}
+                        {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                     </Button>
 
-                    {/* Language Toggle */}
+                    {/* Language Toggle - hidden on mobile */}
                     <Button
                         variant="ghost"
                         size="icon"
                         onClick={toggleLanguage}
-                        className="rounded-full"
+                        className="hidden sm:flex rounded-full"
                         title={language === 'en' ? 'Türkçe' : 'English'}
                     >
                         <div className="flex items-center gap-1">
-                            <Globe size={18} />
+                            <Globe size={16} />
                             <span className="text-xs font-bold uppercase">{language}</span>
                         </div>
                     </Button>
 
-                    {/* Account */}
-                    <Link href="/account">
+                    {/* Account - hidden on mobile */}
+                    <Link href="/account" className="hidden sm:block">
                         <Button variant="ghost" size="icon" className="rounded-full">
-                            <User size={22} />
+                            <User size={20} />
                         </Button>
                     </Link>
                 </div>
             </div>
 
+            {/* Mobile Search Bar */}
+            {isMobileSearchOpen && (
+                <div className="md:hidden border-t border-border bg-white dark:bg-surface p-3 absolute w-full left-0 top-16 animate-in slide-in-from-top-2">
+                    <div className="relative">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-text-secondary" />
+                        <input
+                            type="text"
+                            placeholder={t("nav.search")}
+                            onKeyDown={(e) => {
+                                handleSearch(e);
+                                if (e.key === 'Enter') setIsMobileSearchOpen(false);
+                            }}
+                            autoFocus
+                            className="h-12 w-full rounded-full bg-gray-100 dark:bg-gray-800 pl-10 pr-4 text-base outline-none focus:ring-2 focus:ring-primary/20"
+                        />
+                    </div>
+                </div>
+            )}
+
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="md:hidden border-t border-border bg-white dark:bg-surface p-4 absolute w-full left-0 animate-in slide-in-from-top-5">
+                <div className="md:hidden border-t border-border bg-white dark:bg-surface p-4 absolute w-full left-0 top-16 animate-in slide-in-from-top-5 max-h-[calc(100vh-4rem)] overflow-y-auto">
                     <div className="flex flex-col space-y-4">
-                        <Link href="/collection" className="text-lg font-medium" onClick={() => setIsMenuOpen(false)}>
+                        <Link href="/collection" className="text-lg font-medium py-2" onClick={() => setIsMenuOpen(false)}>
                             {t("nav.collection")}
                         </Link>
                         <button
-                            className="text-lg font-medium text-left"
+                            className="text-lg font-medium text-left py-2"
                             onClick={() => {
                                 setIsMenuOpen(false);
                                 toast(t("nav.drops") + " " + t("toast.comingSoon"), "success");
@@ -169,7 +192,7 @@ export function Navbar() {
                             {t("nav.drops")}
                         </button>
                         <button
-                            className="text-lg font-medium text-left"
+                            className="text-lg font-medium text-left py-2"
                             onClick={() => {
                                 setIsMenuOpen(false);
                                 toast(t("nav.lookbook") + " " + t("toast.comingSoon"), "success");
@@ -177,27 +200,45 @@ export function Navbar() {
                         >
                             {t("nav.lookbook")}
                         </button>
-                        <div className="pt-4 border-t border-border">
-                            <input
-                                type="text"
-                                placeholder={t("nav.search")}
-                                onKeyDown={handleSearch}
-                                className="h-12 w-full rounded-lg bg-gray-100 dark:bg-gray-800 px-4 text-base outline-none"
-                            />
-                        </div>
-                        <div className="flex gap-2 pt-2">
-                            <Link href="/account/wishlist" className="flex-1" onClick={() => setIsMenuOpen(false)}>
-                                <Button variant="outline" className="w-full">
+
+                        {/* Quick Actions */}
+                        <div className="pt-4 border-t border-border grid grid-cols-2 gap-3">
+                            <Link href="/account/wishlist" onClick={() => setIsMenuOpen(false)}>
+                                <Button variant="outline" className="w-full h-12">
                                     <Heart size={18} className="mr-2" />
                                     {t("nav.wishlist")} {wishlistCount > 0 && `(${wishlistCount})`}
                                 </Button>
                             </Link>
-                            <Link href="/account" className="flex-1" onClick={() => setIsMenuOpen(false)}>
-                                <Button variant="outline" className="w-full">
+                            <Link href="/account" onClick={() => setIsMenuOpen(false)}>
+                                <Button variant="outline" className="w-full h-12">
                                     <User size={18} className="mr-2" />
                                     {t("nav.account")}
                                 </Button>
                             </Link>
+                        </div>
+
+                        {/* Theme & Language Toggle for Mobile */}
+                        <div className="pt-4 border-t border-border flex gap-3">
+                            <Button
+                                variant="outline"
+                                className="flex-1 h-12"
+                                onClick={() => {
+                                    toggleTheme();
+                                }}
+                            >
+                                {theme === 'dark' ? <Sun size={18} className="mr-2" /> : <Moon size={18} className="mr-2" />}
+                                {theme === 'dark' ? 'Açık Mod' : 'Koyu Mod'}
+                            </Button>
+                            <Button
+                                variant="outline"
+                                className="flex-1 h-12"
+                                onClick={() => {
+                                    toggleLanguage();
+                                }}
+                            >
+                                <Globe size={18} className="mr-2" />
+                                {language === 'en' ? 'Türkçe' : 'English'}
+                            </Button>
                         </div>
                     </div>
                 </div>

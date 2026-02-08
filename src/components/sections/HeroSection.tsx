@@ -9,7 +9,7 @@ export function HeroSection() {
     const { t } = useLanguage();
 
     return (
-        <section className="relative h-[85vh] w-full overflow-hidden flex items-center justify-center">
+        <section className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden flex items-center justify-center">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <Image
@@ -23,16 +23,16 @@ export function HeroSection() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 container-custom text-center text-white space-y-6">
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase italic tracking-tighter leading-none animate-in fade-in zoom-in duration-1000">
+            <div className="relative z-10 container-custom text-center text-white space-y-4 md:space-y-6 px-4">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase italic tracking-tighter leading-none animate-in fade-in zoom-in duration-1000">
                     {t("home.heroTitle")}
                 </h1>
-                <p className="text-lg md:text-xl font-medium max-w-2xl mx-auto opacity-90 animate-in slide-in-from-bottom-5 delay-300 duration-1000">
+                <p className="text-base sm:text-lg md:text-xl font-medium max-w-2xl mx-auto opacity-90 animate-in slide-in-from-bottom-5 delay-300 duration-1000">
                     {t("home.heroSubtitle")}
                 </p>
-                <div className="pt-4 animate-in slide-in-from-bottom-8 delay-500 duration-1000">
+                <div className="pt-2 md:pt-4 animate-in slide-in-from-bottom-8 delay-500 duration-1000">
                     <Link href="/collection">
-                        <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-10 py-6 text-lg rounded-full">
+                        <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 md:px-10 py-5 md:py-6 text-base md:text-lg rounded-full">
                             {t("home.shopNow")}
                         </Button>
                     </Link>
